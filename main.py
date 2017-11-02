@@ -14,11 +14,16 @@ def weChat():
         nonce = request.args.get('nonce', '')
         echostr = request.args.get('echostr', '')
         s = ''.join(sorted([timestamp, nonce, token]))
-        if hashlib.sha1(s).hexdigest() == signature:
+        if hashlib.sha1(s.encode()).hexdigest() == signature:
             return echostr
     else:
         one=parse(request.data)
-        return reply(one).send()
+        print("处理成功",one)
+        data=reply(one).send()
+        print(data)
+        return data
+  
+ 
         
 @app.route('/')
 def hello():

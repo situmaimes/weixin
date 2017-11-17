@@ -2,8 +2,8 @@ import time
 from replyMsg import *
 def replyXml(message):
     processFuns={"text":replyText,"image":replyImage,"location":replyLocation}
-    if message.msgType in processFuns:
-        response=processFuns[message.msgType](message).createXMlreply()
+    if message.MsgType in processFuns:
+        response=processFuns[message.MsgType](message).createXMlreply()
     return response
 
 

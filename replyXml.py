@@ -24,7 +24,7 @@ class Msg():
         return "success"
 
 class TextMsg(Msg):
-    def __init__(self, ToUserName='',FromUserName='', msg=None, content):
+    def __init__(self, content,ToUserName='',FromUserName='', msg=None):
         Msg.__init__(self,ToUserName=ToUserName,FromUserName=FromUserName,msg=msg)
         self.data['Content'] = content
     def createXMlreply(self):
@@ -40,7 +40,7 @@ class TextMsg(Msg):
         return XmlTextForm.format(**self.data)
     
 class ImageMsg(Msg):
-    def __init__(self,ToUserName='',FromUserName='',msg=None,MediaId):
+    def __init__(self,MediaId,ToUserName='',FromUserName='',msg=None):
         Msg.__init__(self,ToUserName=ToUserName,FromUserName=FromUserName,msg=msg)
         self.data['MediaId'] = MediaId
     def createXMlreply(self):
@@ -58,7 +58,7 @@ class ImageMsg(Msg):
         return XmlImageForm.format(**self.data)
 
 class MusicMsg(Msg):
-    def __init__(self,ToUserName='',FromUserName='',msg=None,title,description,musicUrl,HQmusicUrl,MediaId='IJS0zz1EchXLLQE5JfGOu_hZJuTH0DjbPEQ4rDVIesQr3WLeTRKDlQn39xWnVEE_'):
+    def __init__(self,title,description,musicUrl,HQmusicUrl,ToUserName='',FromUserName='',msg=None,MediaId='IJS0zz1EchXLLQE5JfGOu_hZJuTH0DjbPEQ4rDVIesQr3WLeTRKDlQn39xWnVEE_'):
         Msg.__init__(self,ToUserName=ToUserName,FromUserName=FromUserName,msg=msg)
         self.data['title']=title
         self.data['description']=description
